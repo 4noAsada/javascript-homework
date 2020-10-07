@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<p>行：<label for="row"></label><input id="row" type="number"/></p>
+<p>列：<label for="column"></label><input id="column" type="number"/></p>
+<p><button onclick="onGenerate()">生成</button></p>
+</body>
+<script type="text/javascript">
+    function onGenerate() {
+        generateTable(
+          document.getElementById("row").value,
+          document.getElementById("column").value
+        );
+    }
+
+    function generateTable(row, column) {
+        let tableE = document.createElement("table");
+        tableE.style.border = "solid red 2px";
+        for (let curRow = 0; curRow < row; ++curRow) {
+            let rowE = document.createElement("tr");
+            for (let curColumn = 0; curColumn < column; ++curColumn) {
+                let colE = document.createElement("td");
+                colE.innerText = "第" + (curRow + 1) + "行" + "第" + (curColumn + 1) + "列";
+                colE.style.border = "solid black 1px";
+                rowE.appendChild(colE);
+            }
+            tableE.appendChild(rowE);
+        }
+        document.body.appendChild(tableE);
+    }
+</script>
+</html>
